@@ -1,0 +1,48 @@
+import React from "react";
+import {Paper, Container, Grid, Button, Box, Typography, TextField, Stack} from '@mui/material'
+
+type LoginType = {
+  username: string,
+  password: string
+}
+
+export const LoginPage: React.FC<{}> = () => {
+
+  const [loginData, setLoginData] = React.useState<LoginType>({
+    username: "",
+    password: "",
+  });
+
+
+  const dataLogin = (e) => {
+    setLoginData({..loginData, [e.target.name]: e.target.value})
+  }
+  return (
+    <Container maxWidth="sm">
+
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{minHeight: "100vh"}}
+      >
+        <Grid item>
+          <Paper sx={{padding: "1.2em", borderRadius: "0.5em"}}>
+            <Typography sx={{mb: 2}} variant="h4">Iniciar Sesión</Typography>
+            <Box component="form">
+
+              <TextField name="username" fullWidth label="email" sx={{mt: 2, mb: 1.5}} required />
+              <TextField fullWidth type="password" label="password" sx={{mt: 1.5, mb: 1.5}} required />
+
+
+              <Button fullWidth type="submit" sx={{mt: 1.5, mb: 3}} variant="contained">
+                Iniciar Sesión
+              </Button>
+            </Box>
+          </Paper>
+        </Grid>
+      </Grid>
+    </Container>
+  )
+}
